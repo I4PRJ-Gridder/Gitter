@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\MagmaMusen\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\MagmaMusen\\.nuget\\packages"
+    ]
+  }
+}
