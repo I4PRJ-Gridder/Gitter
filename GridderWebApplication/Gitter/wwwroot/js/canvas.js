@@ -1,42 +1,39 @@
-﻿class Gitter {
-    //constructor
-    constructor(currentColor = "black") {
-        this.canvas = document.querySelector("#canvas");
-        this.ctx = canvas.getContext("2d");
-        this.canvasPos = canvas.getBoundingClientRect();
+﻿var Gitter = function Gitter(color = "green") {
+    this.canvas = document.querySelector("#canvas");
+    this.ctx = canvas.getContext("2d");
+    this.canvasPos = canvas.getBoundingClientRect();
+    this.color = color;
 
-        this.resize(window.innerWidth, window.innerHeight)
 
-        window.addEventListener('click', this.placePixel.bind(this), false);
-    }
+    this.resize(window.innerWidth, window.innerHeight);
 
-    placePixel(e) {
-        this.ctx.fillStyle = "red";
-
-        this.ctx.fillRect(e.pageX - canvas.offsetLeft - 3, e.pageY - canvas.offsetTop - 3, 3, 3);
-    }
-
-    resize(x, y) {
-        this.canvas.height = y;
-        this.canvas.width = x;
-    }
-
-    test() {
-        this.ctx.strokeStyle = "red";
-        this.ctx.strokeRect(20, 20, 50, 80);
-
-        this.ctx.strokeRect(20, 20, 100, 60);
-
-        this.ctx.fillRect(6, 6, 1, 1);
-    }
-
-    setColor(color) {
-    }
+    window.addEventListener('click', this.placePixel.bind(this), false);
 }
 
+Gitter.prototype.placePixel = function (e) {
+    this.setColor(this.color);
+    this.ctx.fillRect(e.pageX - canvas.offsetLeft - 3, e.pageY - canvas.offsetTop - 3, 3, 3);
+    console.log(this.color);
+};
 
-window.addEventListener("load", () => {
-    var gitter = new Gitter();
+Gitter.prototype.resize = function(x, y) {
+    this.canvas.height = y;
+    this.canvas.width = x;
+};
 
-    gitter.test();
-});
+Gitter.prototype.test = function() {
+    this.ctx.strokeStyle = "green";
+    this.ctx.strokeRect(20, 20, 50, 80);
+
+    this.ctx.strokeRect(20, 20, 100, 60);
+
+    this.ctx.fillRect(6, 6, 1, 1);
+};
+
+Gitter.prototype.setColor = function (color) {
+    this.color = color;
+    this.ctx.fillStyle = color;
+};
+
+
+
