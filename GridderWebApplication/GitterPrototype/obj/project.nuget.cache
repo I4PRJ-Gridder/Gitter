@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3D2Ez0dZ36QkSke9aLIrH6r97qvRIpYmHLlvCe6ELKgd+wMHzcmcNh1pn+gWe68Teb04qYRhXhO08EgPVd1F0Q==",
+  "dgSpecHash": "emGgn9iL3SfM7K2tAC9mA7KnxKAHJ8pKvKMN6kM1J1p85HZkZ2wSNs86/mNp7mVjVGntq5mu+W0I7tU/p97pSQ==",
   "success": true,
-  "projectFilePath": "D:\\AarhusUniversitetData\\PRJ4\\GitterPrototype\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
+  "projectFilePath": "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -14,7 +14,6 @@ window.addEventListener("load", () => {
     // Resize
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
-    canvas.style.top = 50px;
 
 
     ctx.strokeStyle = "red";
@@ -30,7 +29,7 @@ window.addEventListener("load", () => {
         console.log(e.clientX);
         console.log("hej");
        
-        ctx.fillRect(e.pageX - canvasPos.left, e.pageY - canvasPos.top, 3, 3);
+        ctx.fillRect(e.pageX - canvas.offsetLeft -3, e.pageY - canvas.offsetTop -3, 3, 3);
 
     }
 

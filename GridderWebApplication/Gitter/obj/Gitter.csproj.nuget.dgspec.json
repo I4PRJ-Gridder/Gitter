@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AarhusUniversitetData\\PRJ4\\GitterPrototype\\GridderWebApplication\\Gitter\\Gitter.csproj": {}
+    "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\Gitter\\Gitter.csproj": {}
   },
   "projects": {
-    "D:\\AarhusUniversitetData\\PRJ4\\GitterPrototype\\GridderWebApplication\\Gitter\\Gitter.csproj": {
+    "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\Gitter\\Gitter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AarhusUniversitetData\\PRJ4\\GitterPrototype\\GridderWebApplication\\Gitter\\Gitter.csproj",
+        "projectUniqueName": "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\Gitter\\Gitter.csproj",
         "projectName": "Gitter",
-        "projectPath": "D:\\AarhusUniversitetData\\PRJ4\\GitterPrototype\\GridderWebApplication\\Gitter\\Gitter.csproj",
+        "projectPath": "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\Gitter\\Gitter.csproj",
         "packagesPath": "C:\\Users\\MagmaMusen\\.nuget\\packages\\",
-        "outputPath": "D:\\AarhusUniversitetData\\PRJ4\\GitterPrototype\\GridderWebApplication\\Gitter\\obj\\",
+        "outputPath": "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\Gitter\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MagmaMusen\\AppData\\Roaming\\NuGet\\NuGet.Config",
