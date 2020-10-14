@@ -3,16 +3,18 @@
     this.ctx = canvas.getContext("2d");
     this.canvasPos = canvas.getBoundingClientRect();
     this.color = color;
+    this.pixelSize = 5;
 
 
     this.resize(window.innerWidth, window.innerHeight);
 
-    window.addEventListener('click', this.placePixel.bind(this), false);
+    window.addEventListener('mousedown', this.placePixel.bind(this), false);
 }
 
 Gitter.prototype.placePixel = function (e) {
     this.setColor(this.color);
-    this.ctx.fillRect(e.pageX - canvas.offsetLeft - 3, e.pageY - canvas.offsetTop - 3, 3, 3);
+    var p = this.pixelSize;
+    this.ctx.fillRect(e.pageX - canvas.offsetLeft - p, e.pageY - canvas.offsetTop - p, p, p);
     console.log(this.color);
 };
 
@@ -34,6 +36,10 @@ Gitter.prototype.setColor = function (color) {
     this.color = color;
     this.ctx.fillStyle = color;
 };
+
+var gitter = new Gitter();
+
+gitter.test();
 
 
 
