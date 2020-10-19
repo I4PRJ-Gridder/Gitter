@@ -1,3 +1,14 @@
-﻿#canvas {
+﻿.wrap {
+    height: 200px;
+    width: 200px;
+    overflow: scroll;
+    border: 0px solid black;
+}
+
+#canvas {
     box-shadow: 0px 0px 10px black;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
