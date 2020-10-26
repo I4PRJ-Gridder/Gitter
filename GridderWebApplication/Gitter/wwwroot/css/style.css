@@ -11,4 +11,16 @@
     image-rendering: -webkit-crisp-edges;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+    width: 1000px;
+    height: 1000px;
+    margin: auto;
+}
+
+
+
+#canvasholder {
+    height: 600px;
+    width: 600px;
+    overflow: scroll;
+margin: auto
 }
