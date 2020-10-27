@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\MagmaMusen\\.nuget\\packages\\": {}
+    "C:\\Users\\mvraa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
+      "projectUniqueName": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
       "projectName": "GitterPrototype",
-      "projectPath": "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
-      "packagesPath": "C:\\Users\\MagmaMusen\\.nuget\\packages\\",
-      "outputPath": "D:\\AarhusUniversitetData\\PRJ4\\GitterRepository\\Gitter\\GridderWebApplication\\GitterPrototype\\obj\\",
+      "projectPath": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
+      "packagesPath": "C:\\Users\\mvraa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MagmaMusen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mvraa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
