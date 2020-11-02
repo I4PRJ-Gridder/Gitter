@@ -27,9 +27,9 @@
     //EVENTS:
     window.addEventListener("click", this.clickHandle.bind(this), false);
     window.addEventListener("keydown", this.keydownHandle.bind(this), false);
+    window.addEventListener("mousemove", this.mousemoveHandle.bind(this), false);
     this.wrap.addEventListener("DOMMouseScroll", this.mouseScrollHandle.bind(this), false);
     this.wrap.addEventListener("scroll", this.scrollHandle.bind(this), false);
-    this.wrap.addEventListener("mousemove", this.mousemoveHandle.bind(this), false);
     this.wrap.addEventListener("mousedown", this.mousedownHandle.bind(this), false);
     this.wrap.addEventListener("mouseup", this.mouseupHandle.bind(this), false);
 }
@@ -75,13 +75,14 @@ Grid.prototype.clickHandle = function (e) {
 };
 
 Grid.prototype.mousedownHandle = function (e) {
-    if (e.which == 1) this.dragStart = true;
+    console.log(e.which);
+    if (e.which == 3) this.dragStart = true;
     this.dragX = e.pageX; // log start pos
     this.dragY = e.pageY;
 }
 
 Grid.prototype.mouseupHandle = function (e) {
-    if (e.which == 1) this.dragStart = false;
+    if (e.which == 3) this.dragStart = false;
 }
 
 Grid.prototype.mousemoveHandle = function (e) {
