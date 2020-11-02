@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mvraa\\Desktop\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
+      "projectUniqueName": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
       "projectName": "GitterPrototype",
-      "projectPath": "C:\\Users\\mvraa\\Desktop\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
+      "projectPath": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
       "packagesPath": "C:\\Users\\mvraa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mvraa\\Desktop\\Gitter\\GridderWebApplication\\GitterPrototype\\obj\\",
+      "outputPath": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mvraa\\AppData\\Roaming\\NuGet\\NuGet.Config",

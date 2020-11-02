@@ -6,7 +6,7 @@
     image-rendering: crisp-edges;
 }
 
-#canvasholder {
+#wrap {
     margin: auto;
     height: 600px;
     width: 600px;

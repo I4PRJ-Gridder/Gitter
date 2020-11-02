@@ -1,27 +1,28 @@
 ﻿var Grid = function Grid(color = "lime") {
     //MEMBERS:
     this.canvas = document.getElementById("canvas");
-    this.wrap = document.getElementById("canvasholder");
+    this.wrap = document.getElementById("wrap");
     this.ctx = canvas.getContext("2d");
     this.canvasPos = canvas.getBoundingClientRect();
     this.color = color;
-    this.scrollY = 0;
-    this.scrollX = 0;
+    this.scrollY = 0; this.scrollX = 0;
     this.ranFlag = 1;
     this.ranInterval;
-    this.ctx.imageSmoothingEnabled = false;
-
-    //SETUP:
     this.canvasStyleSize = this.canvas.width;
 
-    this.sizeCanvas(300, 300);
+    //SETUP:
+    this.ctx.imageSmoothingEnabled = false;
+    this.sizeCanvas(100, 100);
     this.sizeWrap(window.innerHeight - 150, window.innerWidth - 150);
 
     //EVENTS:
     window.addEventListener("click", this.clickHandle.bind(this), false);
-    this.wrap.addEventListener("DOMMouseScroll", this.mouseScrollHandle.bind(this), false);
     window.addEventListener("keydown", this.keydownHandle.bind(this), false);
+    this.wrap.addEventListener("DOMMouseScroll", this.mouseScrollHandle.bind(this), false);
     this.wrap.addEventListener("scroll", this.scrollHandle.bind(this), false);
+    this.wrap.addEventListener("mousemove", this.mousemoveHandle.bind(this), false);
+    this.wrap.addEventListener("mousedown", this.mousedownHandle.bind(this), false);
+    this.wrap.addEventListener("mouseup", this.mouseupHandle.bind(this), false);
 }
 
 // #region event handlers
@@ -34,6 +35,7 @@ Grid.prototype.scrollHandle = function (e) {
 Grid.prototype.mouseScrollHandle = function (e) {
     this.canvasStyleSize += e.detail * 10;
     this.sizeWrap(this.canvasStyleSize, this.canvasStyleSize);
+    return e.preventDefault() && false;
 }
 
 Grid.prototype.keydownHandle = function (e) {
@@ -49,22 +51,39 @@ Grid.prototype.keydownHandle = function (e) {
             clearInterval(this.ranInterval);
             this.ranFlag = true;
         default:
+            // do nothing
     }
 }
 
 Grid.prototype.clickHandle = function (e) {
     const styleDiff = this.canvas.width / this.canvasStyleSize;
 
-    console.log("style size:" + this.canvasStyleSize);
-    console.log("canvas size:" + this.canvas.width);
-
-    //original
     this.setPixel(
         (Math.floor((e.pageX - canvas.offsetLeft + this.scrollX) * styleDiff)),
         (Math.floor((e.pageY - canvas.offsetTop + this.scrollY) * styleDiff)),
         this.color
     );
 };
+
+var dragStart = false;
+var dragX; var dragY;
+var posX; var posY;
+Grid.prototype.mousedownHandle = function (e) {
+    if (e.which == 1) dragStart = true;
+    dragX = e.pageX;
+    dragY = e.pageY;
+}
+var dragStart;
+Grid.prototype.mouseupHandle = function (e) {
+    if (e.which == 1) dragStart = false;
+}
+
+Grid.prototype.mousemoveHandle = function (e) {
+    if (!dragStart) return;
+
+    this.canvas.style.marginLeft = e.pageX - dragX + "px";
+    this.canvas.style.marginTop = e.pageY - dragY + "px";    
+}
 // #endregion
 
 // #region core methods
