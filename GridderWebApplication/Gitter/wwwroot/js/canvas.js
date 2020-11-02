@@ -7,39 +7,30 @@
     this.canvasHolder = document.getElementById("canvasholder");
     this.scrollY = 0;
     this.scrollX = 0;
-    this.canvasStyleSize = this.canvasElement.width;
+    
     this.ctx.imageSmoothingEnabled = false;
 
     // Set canvas holder size equal to window size.
-    this.canvasHolder.style.height = (window.innerHeight - 50) + "px";
-    this.canvasHolder.style.width = (window.innerWidth - 50) + "px";
+    this.canvasHolder.style.height = (window.innerHeight - 150) + "px";
+    this.canvasHolder.style.width = (window.innerWidth - 150) + "px";
 
+    this.canvasStyleSize = this.canvasElement.width;
 
     this.resize(200, 200);
-
-    this.pixelData = this.createMatrix(canvas.width, canvas.height);
-
-    this.redraw();
-
-
-
-
 
     window.addEventListener("click", this.placePixel.bind(this), false);
     window.addEventListener("mousewheel", this.zoom, false);
     window.addEventListener("DOMMouseScroll", this.zoom, false);
     window.addEventListener("keydown", this.dispatchKeydown.bind(this), false);
 
-
     this.canvasHolder.addEventListener("scroll", e =>
         this.logScroll(e));
 
-    
     const intervalID = window.setInterval(myCallback, 1);
 
     function myCallback() {
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 1; i++) {
             gitter.setPixel(
                 Math.floor(Math.random() * gitter.canvas.width),
                 Math.floor(Math.random() * gitter.canvas.height),
@@ -63,96 +54,39 @@ Gitter.prototype.dispatchKeydown = function(e) {
             this.canvasStyleSize += 50;
             this.canvasElement.style.width = this.canvasStyleSize + "px";
             this.canvasElement.style.height = this.canvasStyleSize + "px";
-
-
-
             break;
+
         case 109:
             // - button
             this.canvasStyleSize -= 50;
             this.canvasElement.style.width = this.canvasStyleSize + "px";
             this.canvasElement.style.height = this.canvasStyleSize + "px";
-            
+            break;
     }
-
 }
 
 Gitter.prototype.placePixel = function (e) {
-    this.setColor(this.color);
-    //this.ctx.fillRect(e.pageX - canvas.offsetLeft - 3, e.pageY - canvas.offsetTop - 3, 3, 3);
-
     const styleDiff = this.canvas.width / this.canvasStyleSize;
-    //console.log("canvas width: " + this.canvas.width);
-    //console.log("style width: " + this.canvasStyleSize);
-    console.log(styleDiff);
+
+    console.log("style size:" + this.canvasStyleSize);
+    console.log("canvas size:" + this.canvas.width);
 
     //original
     this.setPixel(
-
-
         (Math.floor((e.pageX - canvas.offsetLeft + this.scrollX)*styleDiff)),
         (Math.floor((e.pageY - canvas.offsetTop + this.scrollY)*styleDiff)),
         this.color);
-
-    console.log("X:" + Math.round((e.pageX - canvas.offsetLeft + this.scrollX) * styleDiff));
-    console.log("Y:" + Math.round((e.pageY - canvas.offsetTop + this.scrollY) * styleDiff));
-    //this.setPixel(e.pageX, e.pageY, this.color);
-
 };
 
 Gitter.prototype.setPixel = function (x, y, color) {
+
     this.ctx.fillStyle = color;
     this.ctx.fillRect(x, y, 1, 1);
 };
 
-
-// Create 2D matrix.
-Gitter.prototype.createMatrix = function(columns, rows, valueDefault = null) {
-    const a = [];
-
-    for (let x = 0; x < columns; x++) {
-        a[x] = [];
-        for (let y = 0; y < rows; y++) {
-            a[x][y] = valueDefault;
-        }
-    }
-
-    return a;
-}
-
-
-// HANDLE SCROLL
-Gitter.prototype.zoom = function(e) {
-    const delta = e.wheelDelta ? e.wheelDelta / 40 : e.detail ? -e.detail : 0;
-    if (delta) {
-        const scaleFactor = 1.1;
-        const factor = Math.pow(scaleFactor, delta);
-        this.ctx.scale(factor, factor);
-        console.log("handleScroll");
-
-        this.redraw();
-    }
-
-    return e.preventDefault() && false;
-}
-
-
-
 Gitter.prototype.resize = function(x, y) {
     this.canvas.height = y;
     this.canvas.width = x;
-};
-
-Gitter.prototype.test = function() {
-    this.ctx.strokeStyle = "green";
-    this.ctx.strokeRect(20, 20, 50, 80);
-
-    this.ctx.strokeRect(20, 20, 100, 60);
-
-
-    
-
-    this.addImage(image);
 };
 
 Gitter.prototype.setColor = function (color) {
@@ -164,52 +98,8 @@ Gitter.prototype.addImage = function (image) {
     
     this.ctx.imageSmoothingEnabled = false;
     this.ctx.drawImage(image, 0, 0);
-    console.log("hej");
+    console.log("addImage called!");
 }
-
-
-var pixelData = twoD(200, 200, null);
-
-function twoD(cols, rows, def = 0) { // create 2d matrix using a 1d array inside a 1d array. def=default values
-    const a = [];
-
-    for (let x = 0; x < cols; x++) {
-        a[x] = [];
-        for (let y = 0; y < rows; y++) {
-            a[x][y] = def;
-        }
-    }
-
-    return a;
-}
-
-Gitter.prototype.redraw = function () { // run this everytime a change occurs(zoom, pan, click), as elements has to be redrawn/rendered
-    // Clear the entire canvas:
-
-    console.log("Redraw called!")
-
-
-    this.ctx.imageSmoothingEnabled = false;
-    //this.ctx.drawImage(image, 0, 0);
-
-    
-    // zoom scope:
-    // console.log(lastX, lastY);
-    // console.log(p1.x, p1.y, " to ", p2.x, p2.y);
-
-    // fill pixels by looping through 2d matrix
-    for (let x = 0; x < this.canvas.height; x++) {
-        for (let y = 0; y < this.canvas.width; y++) {
-            if (this.pixelData[x][y] != null) { // if pixel is empty. skip
-
-                this.setPixel(x, y, pixelData[x][y]);
-                console.log(this.pixelData[x][y]);
-            }
-        }
-    }
-}
-
-
 
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
@@ -220,15 +110,4 @@ function getRandomColor() {
     return color;
 }
 
-
-var image = new Image();
-
-image.src = 'https://mdn.mozillademos.org/files/12640/cat.png';
-
-
 var gitter = new Gitter();
-
-
-
-//gitter.test();
-

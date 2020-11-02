@@ -83,7 +83,6 @@ D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitt
 D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\Gitter.pdb
 D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\Gitter.Views.dll
 D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\Gitter.Views.pdb
-D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.csprojAssemblyReference.cache
 D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.AssemblyInfoInputs.cache
 D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.AssemblyInfo.cs
 D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.csproj.CoreCompileInputs.cache
