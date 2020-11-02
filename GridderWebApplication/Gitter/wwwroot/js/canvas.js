@@ -1,71 +1,58 @@
-﻿var Gitter = function Gitter(color = "lime") {
-    this.canvas = document.querySelector("#canvas");
+﻿var Grid = function Grid(color = "lime") {
+    //MEMBERS:
+    this.canvas = document.getElementById("canvas");
+    this.wrap = document.getElementById("canvasholder");
     this.ctx = canvas.getContext("2d");
     this.canvasPos = canvas.getBoundingClientRect();
     this.color = color;
-    this.canvasElement = document.getElementById("canvas");
-    this.canvasHolder = document.getElementById("canvasholder");
     this.scrollY = 0;
     this.scrollX = 0;
-    
+    this.ranFlag = 1;
+    this.ranInterval;
     this.ctx.imageSmoothingEnabled = false;
 
-    // Set canvas holder size equal to window size.
-    this.canvasHolder.style.height = (window.innerHeight - 150) + "px";
-    this.canvasHolder.style.width = (window.innerWidth - 150) + "px";
+    //SETUP:
+    this.canvasStyleSize = this.canvas.width;
 
-    this.canvasStyleSize = this.canvasElement.width;
+    this.sizeCanvas(300, 300);
+    this.sizeWrap(window.innerHeight - 150, window.innerWidth - 150);
 
-    this.resize(200, 200);
-
-    window.addEventListener("click", this.placePixel.bind(this), false);
-    window.addEventListener("mousewheel", this.zoom, false);
-    window.addEventListener("DOMMouseScroll", this.zoom, false);
-    window.addEventListener("keydown", this.dispatchKeydown.bind(this), false);
-
-    this.canvasHolder.addEventListener("scroll", e =>
-        this.logScroll(e));
-
-    const intervalID = window.setInterval(myCallback, 1);
-
-    function myCallback() {
-
-        for (let i = 0; i < 1; i++) {
-            gitter.setPixel(
-                Math.floor(Math.random() * gitter.canvas.width),
-                Math.floor(Math.random() * gitter.canvas.height),
-                getRandomColor());
-        }
-    }
+    //EVENTS:
+    window.addEventListener("click", this.clickHandle.bind(this), false);
+    this.wrap.addEventListener("DOMMouseScroll", this.mouseScrollHandle.bind(this), false);
+    window.addEventListener("keydown", this.keydownHandle.bind(this), false);
+    this.wrap.addEventListener("scroll", this.scrollHandle.bind(this), false);
 }
 
-Gitter.prototype.logScroll = function (e) {
-    // Save scroll
+// #region event handlers
+Grid.prototype.scrollHandle = function (e) {
     console.log(e.target.scrollTop);
     this.scrollY = e.target.scrollTop;
     this.scrollX = e.target.scrollLeft;
 }
 
-Gitter.prototype.dispatchKeydown = function(e) {
+Grid.prototype.mouseScrollHandle = function (e) {
+    this.canvasStyleSize += e.detail * 10;
+    this.sizeWrap(this.canvasStyleSize, this.canvasStyleSize);
+}
 
+Grid.prototype.keydownHandle = function (e) {
     switch (e.keyCode) {
-        case 107:
-            // + button
-            this.canvasStyleSize += 50;
-            this.canvasElement.style.width = this.canvasStyleSize + "px";
-            this.canvasElement.style.height = this.canvasStyleSize + "px";
-            break;
+        case 82:
+            // r button
+            if (this.ranFlag) {
+                this.ranInterval = setInterval(this.randomPlace.bind(this), 1);
+                this.ranFlag = false;
+                break;
+            }
 
-        case 109:
-            // - button
-            this.canvasStyleSize -= 50;
-            this.canvasElement.style.width = this.canvasStyleSize + "px";
-            this.canvasElement.style.height = this.canvasStyleSize + "px";
-            break;
+            clearInterval(this.ranInterval);
+            this.ranFlag = true;
+        default:
     }
 }
 
-Gitter.prototype.placePixel = function (e) {
+Grid.prototype.clickHandle = function (e) {
     const styleDiff = this.canvas.width / this.canvasStyleSize;
 
     console.log("style size:" + this.canvasStyleSize);
@@ -73,35 +60,52 @@ Gitter.prototype.placePixel = function (e) {
 
     //original
     this.setPixel(
-        (Math.floor((e.pageX - canvas.offsetLeft + this.scrollX)*styleDiff)),
-        (Math.floor((e.pageY - canvas.offsetTop + this.scrollY)*styleDiff)),
-        this.color);
+        (Math.floor((e.pageX - canvas.offsetLeft + this.scrollX) * styleDiff)),
+        (Math.floor((e.pageY - canvas.offsetTop + this.scrollY) * styleDiff)),
+        this.color
+    );
 };
+// #endregion
 
-Gitter.prototype.setPixel = function (x, y, color) {
+// #region core methods
+
+Grid.prototype.setPixel = function (x, y, color) {
 
     this.ctx.fillStyle = color;
     this.ctx.fillRect(x, y, 1, 1);
 };
 
-Gitter.prototype.resize = function(x, y) {
+Grid.prototype.sizeCanvas = function (x, y) {
     this.canvas.height = y;
     this.canvas.width = x;
 };
 
-Gitter.prototype.setColor = function (color) {
-    this.color = color;
-    this.ctx.fillStyle = color;
+Grid.prototype.sizeWrap = function (x, y) {
+    this.canvas.style.width = x + "px";
+    this.canvas.style.height = y + "px";
 };
 
-Gitter.prototype.addImage = function (image) {
-    
+Grid.prototype.addImage = function (image) {
+
     this.ctx.imageSmoothingEnabled = false;
     this.ctx.drawImage(image, 0, 0);
     console.log("addImage called!");
 }
+// #endregion
 
-function getRandomColor() {
+// #region test methods
+
+Grid.prototype.randomPlace = function () {
+    for (let i = 0; i < 1; i++) {
+        this.setPixel(
+            Math.floor(Math.random() * this.canvas.width),
+            Math.floor(Math.random() * this.canvas.height),
+            this.getRandomColor()
+        );
+    }
+}
+
+Grid.prototype.getRandomColor = function () {
     const letters = '0123456789ABCDEF';
     var color = '#';
     for (let i = 0; i < 6; i++) {
@@ -110,4 +114,9 @@ function getRandomColor() {
     return color;
 }
 
-var gitter = new Gitter();
+// #endregion
+
+
+/////////////////////////////////////main//////////////////////////////////////////
+
+var gitter = new Grid();
