@@ -15,13 +15,17 @@
     this.dragX; this.dragY;
     this.marginX = 0; this.marginY = 0;
 
+    //MOUSE MOVE MEMBERS
+    this.worldX;
+    this.worldY;
+
     //RANDOM MEMBERS:
     this.ranFlag = 1;
     this.ranInterval;
 
     //SETUP:
     this.ctx.imageSmoothingEnabled = false;
-    this.sizeCanvas(100, 100);
+    this.sizeCanvas(300, 300);
     this.sizeWrap(window.innerHeight - 150, window.innerWidth - 150);
 
     //EVENTS:
@@ -44,6 +48,7 @@ Grid.prototype.scrollHandle = function (e) {
 Grid.prototype.mouseScrollHandle = function (e) {
     this.canvasStyleSize += e.detail * 10;
     this.sizeWrap(this.canvasStyleSize, this.canvasStyleSize);
+
     return e.preventDefault() && false;
 }
 
@@ -65,13 +70,7 @@ Grid.prototype.keydownHandle = function (e) {
 }
 
 Grid.prototype.clickHandle = function (e) {
-    const styleDiff = this.canvas.width / this.canvasStyleSize;
-
-    this.setPixel(
-        (Math.floor((e.pageX - canvas.offsetLeft + this.scrollX) * styleDiff)),
-        (Math.floor((e.pageY - canvas.offsetTop + this.scrollY) * styleDiff)),
-        this.color
-    );
+    this.setPixel(Math.floor(this.worldX), Math.floor(this.worldY), this.color);
 };
 
 Grid.prototype.mousedownHandle = function (e) {
@@ -86,6 +85,8 @@ Grid.prototype.mouseupHandle = function (e) {
 }
 
 Grid.prototype.mousemoveHandle = function (e) {
+    this.calcWorldPos(e);
+
     if (!this.dragStart) return; // if mousedown event detected
 
     // change since start position?
@@ -106,6 +107,14 @@ Grid.prototype.mousemoveHandle = function (e) {
 // #endregion
 
 // #region core methods
+
+Grid.prototype.calcWorldPos = function (e) {
+    // recalculate mouse cursors position in grid world:
+    const styleDiff = this.canvas.width / this.canvasStyleSize;
+
+    this.worldX = (e.pageX - canvas.offsetLeft + this.scrollX) * styleDiff;
+    this.worldY = (e.pageY - canvas.offsetTop + this.scrollY) * styleDiff;
+}
 
 Grid.prototype.pan = function (x, y) {
     this.canvas.style.marginLeft = x + "px";
