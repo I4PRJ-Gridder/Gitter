@@ -1,27 +1,41 @@
 ﻿var Grid = function Grid(color = "lime") {
-    //MEMBERS:
+    //CANVAS MEMBERS:
     this.canvas = document.getElementById("canvas");
-    this.wrap = document.getElementById("canvasholder");
+    this.wrap = document.getElementById("wrap");
     this.ctx = canvas.getContext("2d");
     this.canvasPos = canvas.getBoundingClientRect();
     this.color = color;
-    this.scrollY = 0;
-    this.scrollX = 0;
-    this.ranFlag = 1;
-    this.ranInterval;
-    this.ctx.imageSmoothingEnabled = false;
 
-    //SETUP:
+    //SCROLL MEMBERS:
+    this.scrollY = 0; this.scrollX = 0;
     this.canvasStyleSize = this.canvas.width;
 
+    //PAN MEMBERS:
+    this.dragStart = false;
+    this.dragX; this.dragY;
+    this.marginX = 0; this.marginY = 0;
+
+    //MOUSE MOVE MEMBERS
+    this.worldX;
+    this.worldY;
+
+    //RANDOM MEMBERS:
+    this.ranFlag = 1;
+    this.ranInterval;
+
+    //SETUP:
+    this.ctx.imageSmoothingEnabled = false;
     this.sizeCanvas(300, 300);
     this.sizeWrap(window.innerHeight - 150, window.innerWidth - 150);
 
     //EVENTS:
     window.addEventListener("click", this.clickHandle.bind(this), false);
-    this.wrap.addEventListener("DOMMouseScroll", this.mouseScrollHandle.bind(this), false);
     window.addEventListener("keydown", this.keydownHandle.bind(this), false);
+    window.addEventListener("mousemove", this.mousemoveHandle.bind(this), false);
+    this.wrap.addEventListener("DOMMouseScroll", this.mouseScrollHandle.bind(this), false);
     this.wrap.addEventListener("scroll", this.scrollHandle.bind(this), false);
+    this.wrap.addEventListener("mousedown", this.mousedownHandle.bind(this), false);
+    this.wrap.addEventListener("mouseup", this.mouseupHandle.bind(this), false);
 }
 
 // #region event handlers
@@ -34,6 +48,8 @@ Grid.prototype.scrollHandle = function (e) {
 Grid.prototype.mouseScrollHandle = function (e) {
     this.canvasStyleSize += e.detail * 10;
     this.sizeWrap(this.canvasStyleSize, this.canvasStyleSize);
+
+    return e.preventDefault() && false;
 }
 
 Grid.prototype.keydownHandle = function (e) {
@@ -49,28 +65,63 @@ Grid.prototype.keydownHandle = function (e) {
             clearInterval(this.ranInterval);
             this.ranFlag = true;
         default:
+            // do nothing
     }
 }
 
 Grid.prototype.clickHandle = function (e) {
-    const styleDiff = this.canvas.width / this.canvasStyleSize;
-
-    console.log("style size:" + this.canvasStyleSize);
-    console.log("canvas size:" + this.canvas.width);
-
-    //original
-    this.setPixel(
-        (Math.floor((e.pageX - canvas.offsetLeft + this.scrollX) * styleDiff)),
-        (Math.floor((e.pageY - canvas.offsetTop + this.scrollY) * styleDiff)),
-        this.color
-    );
+    this.setPixel(Math.floor(this.worldX), Math.floor(this.worldY), this.color);
 };
+
+Grid.prototype.mousedownHandle = function (e) {
+    console.log(e.which);
+    if (e.which == 3) this.dragStart = true;
+    this.dragX = e.pageX; // log start pos
+    this.dragY = e.pageY;
+}
+
+Grid.prototype.mouseupHandle = function (e) {
+    if (e.which == 3) this.dragStart = false;
+}
+
+Grid.prototype.mousemoveHandle = function (e) {
+    this.calcWorldPos(e);
+
+    if (!this.dragStart) return; // if mousedown event detected
+
+    // change since start position?
+    var deltaX = e.pageX - this.dragX;
+    var deltaY = e.pageY - this.dragY;
+
+    // add that change to margin
+    this.marginX += deltaX;
+    this.marginY += deltaY;
+
+    // update margin
+    this.pan(this.marginX, this.marginY);
+
+    // refresh dragstart (or else change will be exponential)
+    this.dragX = e.pageX;
+    this.dragY = e.pageY;
+}
 // #endregion
 
 // #region core methods
 
-Grid.prototype.setPixel = function (x, y, color) {
+Grid.prototype.calcWorldPos = function (e) {
+    // recalculate mouse cursors position in grid world:
+    const styleDiff = this.canvas.width / this.canvasStyleSize;
 
+    this.worldX = (e.pageX - canvas.offsetLeft + this.scrollX) * styleDiff;
+    this.worldY = (e.pageY - canvas.offsetTop + this.scrollY) * styleDiff;
+}
+
+Grid.prototype.pan = function (x, y) {
+    this.canvas.style.marginLeft = x + "px";
+    this.canvas.style.marginTop = y + "px";
+}
+
+Grid.prototype.setPixel = function (x, y, color) {
     this.ctx.fillStyle = color;
     this.ctx.fillRect(x, y, 1, 1);
 };
