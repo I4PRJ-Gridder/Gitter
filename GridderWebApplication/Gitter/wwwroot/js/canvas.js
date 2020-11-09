@@ -6,6 +6,10 @@
     this.canvasPos = canvas.getBoundingClientRect();
     this.color = color;
 
+    // TIL GRUPPEN: apiCaller.getGitter() will be called here 
+
+    // TIL GRUPPEN: apiCaller.keepMeUpdated() will be called here
+
     //SCROLL MEMBERS:
     this.scrollY = 0; this.scrollX = 0;
     this.canvasStyleSize = this.canvas.width;
@@ -40,7 +44,6 @@
 
 // #region event handlers
 Grid.prototype.scrollHandle = function (e) {
-    console.log(e.target.scrollTop);
     this.scrollY = e.target.scrollTop;
     this.scrollX = e.target.scrollLeft;
 }
@@ -61,20 +64,38 @@ Grid.prototype.keydownHandle = function (e) {
                 this.ranFlag = false;
                 break;
             }
-
             clearInterval(this.ranInterval);
             this.ranFlag = true;
+            break;
+
+        case 107:
+            // + button
+            this.canvasStyleSize += 50;
+            this.canvas.style.width = this.canvasStyleSize + "px";
+            this.canvas.style.height = this.canvasStyleSize + "px";
+            break;
+
+        case 109:
+            // - button
+            this.canvasStyleSize -= 50;
+            this.canvas.style.width = this.canvasStyleSize + "px";
+            this.canvas.style.height = this.canvasStyleSize + "px";
+            break;
+
         default:
             // do nothing
     }
 }
 
 Grid.prototype.clickHandle = function (e) {
-    this.setPixel(Math.floor(this.worldX), Math.floor(this.worldY), this.color);
+    let tempX = Math.floor(this.worldX);
+    let tempY = Math.floor(this.worldY);
+
+    // TIL GRUPPEN: apiCaller.PixelPlaceRequest(x, y, color) called here
+    this.setPixel(tempX, tempY, this.color);
 };
 
 Grid.prototype.mousedownHandle = function (e) {
-    console.log(e.which);
     if (e.which == 3) this.dragStart = true;
     this.dragX = e.pageX; // log start pos
     this.dragY = e.pageY;
@@ -166,6 +187,22 @@ Grid.prototype.getRandomColor = function () {
 }
 
 // #endregion
+
+Grid.prototype.renderImage = function () {
+    console.log("renderimage!");
+
+    var img = new Image();   // Create new img element
+    img.src = "https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8";
+
+    img.onload = function() {
+        console.log(img);
+        console.log("hej");
+        this.ctx.drawImage(img, 0, 0);
+    }
+
+  this.ctx.drawImage(img, 0, 0);
+};
+
 
 
 /////////////////////////////////////main//////////////////////////////////////////

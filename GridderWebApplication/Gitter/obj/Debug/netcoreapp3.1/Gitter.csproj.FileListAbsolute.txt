@@ -145,3 +145,4 @@ C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Deb
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\staticwebassets\Gitter.StaticWebAssets.xml
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.genruntimeconfig.cache
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.csproj.CopyComplete
+D:\AarhusUniversitetData\PRJ4\GitterRepository\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.csprojAssemblyReference.cache
