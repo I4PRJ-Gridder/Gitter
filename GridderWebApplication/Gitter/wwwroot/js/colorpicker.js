@@ -11,12 +11,12 @@ var ColorPicker = function ColorPicker(currentColor = "black") {
         
     // set color button evenlisteners:
     for (var i = 0; i < this.colors.length; i++) {
-        this.colors[i].addEventListener('click', this.click.bind(this), false);
+        this.colors[i].addEventListener('click', this.clickHandle.bind(this), false);
     }
 }
 
 // color click event
-ColorPicker.prototype.click = function (e) {
+ColorPicker.prototype.clickHandle = function (e) {
     // update current color indicator
     this.updateCurrentObj(e.target);
 
@@ -40,5 +40,3 @@ ColorPicker.prototype.updateCurrentObj = function (obj) {
     this.currentObj = obj;
     obj.className = "color-selected";
 };
-
-var colorPicker = new ColorPicker("green");

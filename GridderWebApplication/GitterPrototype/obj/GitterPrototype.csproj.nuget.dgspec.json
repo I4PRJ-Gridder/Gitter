@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AarhusUniversitetData\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj": {}
+    "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj": {}
   },
   "projects": {
-    "D:\\AarhusUniversitetData\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj": {
+    "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AarhusUniversitetData\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
+        "projectUniqueName": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
         "projectName": "GitterPrototype",
-        "projectPath": "D:\\AarhusUniversitetData\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
-        "packagesPath": "C:\\Users\\Magnus\\.nuget\\packages\\",
-        "outputPath": "D:\\AarhusUniversitetData\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\obj\\",
+        "projectPath": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\GitterPrototype.csproj",
+        "packagesPath": "C:\\Users\\mvraa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mvraa\\Documents\\GitHub\\PRJ4\\Gitter\\GridderWebApplication\\GitterPrototype\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Magnus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mvraa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

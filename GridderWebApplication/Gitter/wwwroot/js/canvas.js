@@ -1,11 +1,11 @@
-﻿var Grid = function Grid(color = "lime", cp) {
+﻿var Grid = function Grid(cp) {
     //CANVAS MEMBERS:
     this.canvas = document.getElementById("canvas");
     this.wrap = document.getElementById("wrap");
     this.ctx = canvas.getContext("2d");
     this.canvasPos = canvas.getBoundingClientRect();
-    this.color = color;
     this.colorPicker = cp;
+    this.color = cp.currentColor;
 
     // TIL GRUPPEN: apiCaller.getGitter() will be called here 
 
@@ -45,42 +45,27 @@
 
 // #region event handlers
 Grid.prototype.scrollHandle = function (e) {
-    this.scrollY = e.target.scrollTop;
-    this.scrollX = e.target.scrollLeft;
+    this.setScroll(e.target.scrollLeft, e.target.scrollTop);
 }
 
 Grid.prototype.mouseScrollHandle = function (e) {
-    this.canvasStyleSize += e.detail * 10;
-    this.sizeWrap(this.canvasStyleSize, this.canvasStyleSize);
+    this.zoom(e.detail * 10);
 
     return e.preventDefault() && false;
 }
 
 Grid.prototype.keydownHandle = function (e) {
     switch (e.keyCode) {
-        case 82:
-            // r button
-            if (this.ranFlag) {
-                this.ranInterval = setInterval(this.randomPlace.bind(this), 1);
-                this.ranFlag = false;
-                break;
-            }
-            clearInterval(this.ranInterval);
-            this.ranFlag = true;
+        case 82: // r button
+            this.toggleRandom();
             break;
 
-        case 107:
-            // + button
-            this.canvasStyleSize += 50;
-            this.canvas.style.width = this.canvasStyleSize + "px";
-            this.canvas.style.height = this.canvasStyleSize + "px";
+        case 107: // + button
+            this.zoom(50);
             break;
 
-        case 109:
-            // - button
-            this.canvasStyleSize -= 50;
-            this.canvas.style.width = this.canvasStyleSize + "px";
-            this.canvas.style.height = this.canvasStyleSize + "px";
+        case 109: // - button
+            this.zoom(-50);
             break;
 
         default:
@@ -130,6 +115,26 @@ Grid.prototype.mousemoveHandle = function (e) {
 // #endregion
 
 // #region core methods
+Grid.prototype.setScroll = function (x, y) {
+    this.scrollX = x;
+    this.scrollY = y;
+}
+
+Grid.prototype.zoom = function (scale) {
+    this.canvasStyleSize += scale;
+    this.sizeWrap(this.canvasStyleSize, this.canvasStyleSize);
+}
+
+Grid.prototype.toggleRandom = function () {
+    if (this.ranFlag) {
+        this.ranInterval = setInterval(this.randomPlace.bind(this), 1);
+        this.ranFlag = false;
+        return this.ranFlag;
+    }
+    clearInterval(this.ranInterval);
+    this.ranFlag = true;
+    return this.ranFlag;
+}
 
 Grid.prototype.calcWorldPos = function (e) {
     // recalculate mouse cursors position in grid world:
@@ -209,6 +214,6 @@ Grid.prototype.renderImage = function () {
 
 /////////////////////////////////////main//////////////////////////////////////////
 
-var testtest = new ColorPicker("black");
+var testtest = new ColorPicker("purple");
 
-var gitter = new Grid("green",testtest);
+var gitter = new Grid(testtest);

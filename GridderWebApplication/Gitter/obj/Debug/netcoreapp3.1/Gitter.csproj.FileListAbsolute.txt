@@ -122,7 +122,6 @@ C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Deb
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.pdb
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\Gitter.exe
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\Gitter.deps.json
 C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\bin\Debug\netcoreapp3.1\Gitter.runtimeconfig.json
@@ -183,3 +182,4 @@ D:\AarhusUniversitetData\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netc
 D:\AarhusUniversitetData\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.pdb
 D:\AarhusUniversitetData\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.genruntimeconfig.cache
 D:\AarhusUniversitetData\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\Gitter.csproj.CopyComplete
+C:\Users\mvraa\Documents\GitHub\PRJ4\Gitter\GridderWebApplication\Gitter\obj\Debug\netcoreapp3.1\scopedcss\bundle\Gitter.styles.css
