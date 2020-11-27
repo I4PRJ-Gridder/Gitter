@@ -1,0 +1,36 @@
+﻿.color-picker-module {
+    white-space: nowrap;
+}
+
+#currentColor {
+    display: inline-block;
+    width: 2%;
+    height: 69px;
+    box-shadow: 0px 0px 5px grey;
+}
+
+.color-wrap {
+    box-shadow: 0px 0px 5px grey;
+    width: 98%;
+    overflow-x: scroll;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 4px;
+}
+
+.color-wrap div {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.color-selected {
+    box-shadow: 0px 0px 10px black;
+    border: 2px solid black;
+}
+
+.color-wrap div:hover {
+    box-shadow: 0px 0px 5px black;
+}

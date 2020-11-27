@@ -1,10 +1,11 @@
-﻿var Grid = function Grid(color = "lime") {
+﻿var Grid = function Grid(color = "lime", cp) {
     //CANVAS MEMBERS:
     this.canvas = document.getElementById("canvas");
     this.wrap = document.getElementById("wrap");
     this.ctx = canvas.getContext("2d");
     this.canvasPos = canvas.getBoundingClientRect();
     this.color = color;
+    this.colorPicker = cp;
 
     // TIL GRUPPEN: apiCaller.getGitter() will be called here 
 
@@ -88,6 +89,7 @@ Grid.prototype.keydownHandle = function (e) {
 }
 
 Grid.prototype.clickHandle = function (e) {
+    this.color = this.colorPicker.currentColor;
     let tempX = Math.floor(this.worldX);
     let tempY = Math.floor(this.worldY);
 
@@ -207,4 +209,6 @@ Grid.prototype.renderImage = function () {
 
 /////////////////////////////////////main//////////////////////////////////////////
 
-var gitter = new Grid();
+var testtest = new ColorPicker("black");
+
+var gitter = new Grid("green",testtest);
