@@ -5,22 +5,54 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitterPrototype", "GitterPrototype\GitterPrototype.csproj", "{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitter", "Gitter\Gitter.csproj", "{84CAD1EC-C675-4687-988F-4681D513DC07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gitter", "Gitter\Gitter.csproj", "{84CAD1EC-C675-4687-988F-4681D513DC07}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JsUnitTest", "JsUnitTest\JsUnitTest.vcxproj", "{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Debug|x64.Build.0 = Debug|Any CPU
+		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Debug|x86.Build.0 = Debug|Any CPU
 		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Release|x64.ActiveCfg = Release|Any CPU
+		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Release|x64.Build.0 = Release|Any CPU
+		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Release|x86.ActiveCfg = Release|Any CPU
+		{A60F6DDA-5315-4CFD-A1D5-C3E4D80E364F}.Release|x86.Build.0 = Release|Any CPU
 		{84CAD1EC-C675-4687-988F-4681D513DC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{84CAD1EC-C675-4687-988F-4681D513DC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CAD1EC-C675-4687-988F-4681D513DC07}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{84CAD1EC-C675-4687-988F-4681D513DC07}.Debug|x64.Build.0 = Debug|Any CPU
+		{84CAD1EC-C675-4687-988F-4681D513DC07}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{84CAD1EC-C675-4687-988F-4681D513DC07}.Debug|x86.Build.0 = Debug|Any CPU
 		{84CAD1EC-C675-4687-988F-4681D513DC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84CAD1EC-C675-4687-988F-4681D513DC07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84CAD1EC-C675-4687-988F-4681D513DC07}.Release|x64.ActiveCfg = Release|Any CPU
+		{84CAD1EC-C675-4687-988F-4681D513DC07}.Release|x64.Build.0 = Release|Any CPU
+		{84CAD1EC-C675-4687-988F-4681D513DC07}.Release|x86.ActiveCfg = Release|Any CPU
+		{84CAD1EC-C675-4687-988F-4681D513DC07}.Release|x86.Build.0 = Release|Any CPU
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Debug|x64.ActiveCfg = Debug|x64
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Debug|x64.Build.0 = Debug|x64
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Debug|x86.ActiveCfg = Debug|Win32
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Debug|x86.Build.0 = Debug|Win32
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Release|Any CPU.ActiveCfg = Release|Win32
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Release|x64.ActiveCfg = Release|x64
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Release|x64.Build.0 = Release|x64
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Release|x86.ActiveCfg = Release|Win32
+		{9C3F2845-4883-41C2-AC1C-09EEE085A4CF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

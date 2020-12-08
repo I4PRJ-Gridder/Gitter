@@ -31,7 +31,7 @@
     //SETUP:
     this.ctx.imageSmoothingEnabled = false;
     this.sizeCanvas(300, 300);
-    this.sizeWrap(window.innerHeight - 150, window.innerWidth - 150);
+    this.sizeCanvasEle(window.innerHeight - 150, window.innerWidth - 150);
 
     //EVENTS:
     window.addEventListener("click", this.clickHandle.bind(this), false);
@@ -122,7 +122,7 @@ Grid.prototype.setScroll = function (x, y) {
 
 Grid.prototype.zoom = function (scale) {
     this.canvasStyleSize += scale;
-    this.sizeWrap(this.canvasStyleSize, this.canvasStyleSize);
+    this.sizeCanvasEle(this.canvasStyleSize, this.canvasStyleSize);
 }
 
 Grid.prototype.toggleRandom = function () {
@@ -159,7 +159,7 @@ Grid.prototype.sizeCanvas = function (x, y) {
     this.canvas.width = x;
 };
 
-Grid.prototype.sizeWrap = function (x, y) {
+Grid.prototype.sizeCanvasEle = function (x, y) {
     this.canvas.style.width = x + "px";
     this.canvas.style.height = y + "px";
 };
