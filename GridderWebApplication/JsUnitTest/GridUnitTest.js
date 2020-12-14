@@ -1,9 +1,16 @@
+var ColorPickerFake = function ColorPickerFake(currentColor = "black") {
+	this.currentColor = currentColor; // current color member
+}
+
 {
 	var _uut;
+	var _cpFake;
 
 	function Setup(testName) {
 		test(testName);
-		_uut = new ColorPicker("green");
+
+		_cpFake = new ColorPickerFake();
+		_uut = new Grid(_cpFake);
 	}
 
 	function Teardown() {
@@ -14,18 +21,33 @@
 		createEle("h1", "Grid Unit Test");
 	});
 
-	//test one
+	//constructor test
 	addEventListener("load", function () {
-		Setup("My first test");
+		Setup("ctor_Run_DefaultValuesCorrect:");
 
-		createEle("p", _uut.currentColor);
+		isEq(typeof (_uut.canvas), "object");
+		isEq(typeof (_uut.wrap), "object");
+		isEq(typeof (_uut.ctx), "object");
+		isEq(typeof (_uut.canvasPos), "object");
+		isEq(typeof (_uut.colorPicker), "object");
+		isEq(_uut.color, "black");
 
 		Teardown();
 	});
 
-	//test two
+	//key press tests
 	addEventListener("load", function () {
-		Setup("My second test");
+		Setup("keydownHandle_ThrowEvent_CorrectValues");
+
+		isEq(_uut.ranInterval, undefined);
+
+		isEq(_uut.ranFlag, true);
+		window.simKey(82);
+		isEq(typeof(_uut.ranInterval), "number");
+
+		isEq(_uut.ranFlag, false);
+		window.simKey(82);
+		isEq(_uut.ranFlag, true);
 
 		Teardown();
 	});

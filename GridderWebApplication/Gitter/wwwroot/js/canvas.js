@@ -25,7 +25,7 @@
     this.worldY;
 
     //RANDOM MEMBERS:
-    this.ranFlag = 1;
+    this.ranFlag = true;
     this.ranInterval;
 
     //SETUP:

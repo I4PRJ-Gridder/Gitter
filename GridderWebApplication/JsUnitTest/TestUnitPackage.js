@@ -24,6 +24,10 @@ function isNotEq(p1, p2, title = "myTest"){
 	return false;
 }
 
+function simKey(key) {
+	this.dispatchEvent(new KeyboardEvent('keydown', { keyCode: key }));
+}
+
 function test(testName){
 	var ele = document.createElement('h3');
 	ele.innerHTML = testName;
